@@ -12,7 +12,8 @@
       --bg: #1c1c1c;
       --text: #e5e5e5;
       --accent: #4182cd;
-      --accent-hover: #555;
+      --accento: #333;
+      --accent-hover: #1f3d72;
     }
 
     body {
@@ -48,7 +49,7 @@
     }
 
     button {
-      background-color: #333;
+      background-color: var(--accento);
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -131,34 +132,49 @@
   </footer>
 
   <script>
-    document.getElementById('downloadBtn').addEventListener('click', async () => {
-      const btn = document.getElementById('downloadBtn');
-      btn.textContent = 'Preparing download...';
-      btn.disabled = true;
-      try {
+document.getElementById('downloadBtn').addEventListener('click', async () => {
+    const btn = document.getElementById('downloadBtn');
+    btn.textContent = 'Preparing download...';
+    btn.disabled = true;
+
+    // 1️⃣ Track download
+    try {
+        await fetch('https://feedback-server-tnr.onrender.com/track_download', { method: 'POST' });
+        console.log('BMTb download counter incremented.');
+    } catch (err) {
+        console.error('Failed to increment download count:', err);
+        // Optional: retry or continue anyway
+    }
+
+    // 2️⃣ Trigger the actual download from GitHub release
+    try {
         const response = await fetch('https://api.github.com/repos/Tech-Naija-Rise/thought_book/releases/latest');
         const data = await response.json();
         const asset = data.assets?.[0];
-        if (asset && asset.browser_download_url) {
-          const link = document.createElement('a');
-          link.href = asset.browser_download_url;
-          link.download = asset.name;
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
-          btn.textContent = 'Download started';
+        if (asset?.browser_download_url) {
+            const link = document.createElement('a');
+            link.href = asset.browser_download_url;
+            link.download = asset.name;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            btn.textContent = 'Download started';
         } else {
-          btn.textContent = 'No release found';
+            btn.textContent = 'No release found';
         }
-      } catch (e) {
+    } catch (e) {
         btn.textContent = 'Error fetching latest version';
-      }
-      setTimeout(() => {
+        console.error(e);
+    }
+
+    // Reset button after a short delay
+    setTimeout(() => {
         btn.textContent = 'Download for Windows';
         btn.disabled = false;
-      }, 4000);
-    });
-  </script>
+    }, 4000);
+});
+</script>
+
 
 </body>
 
