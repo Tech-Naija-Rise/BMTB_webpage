@@ -132,6 +132,11 @@
   </footer>
 
   <script>
+    // Ping your server as soon as the page loads
+  fetch("https://feedback-server-tnr.onrender.com/ping")
+    .then(() => console.log("Server pinged"))
+    .catch(() => console.log("Ping failed (may still wake the server)"));
+    
 document.getElementById('downloadBtn').addEventListener('click', async () => {
     const btn = document.getElementById('downloadBtn');
     btn.textContent = 'Preparing download...';
