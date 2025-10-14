@@ -102,7 +102,7 @@
   <h1>Thought Book</h1>
   <h2>Think Clearly. Write Privately.</h2>
 
-  <p>Thought Book is a fast, offline-first note app for Windows.
+  <p>Thought Book is a private offline-first note app for Windows.
     It gives you a private space to capture your thoughts — without cloud logins, syncing delays, or internet
     distractions.</p>
 
@@ -118,11 +118,11 @@
   <div class="features">
     <h3>Why Thought Book?</h3>
     <ul>
-      <li><strong>Offline & Private:</strong> Notes are saved locally, encrypted, and never sent online.</li>
-      <!-- <li><strong>Instant Access:</strong> Opens in a second, even on basic systems.</li> -->
-      <li><strong>Simple Protection:</strong> One-password lock and recovery code for your notes.</li>
-      <li><strong>Clean Interface:</strong> Dark theme, sidebar navigation, auto-save.</li>
-      <li><strong>Upgrade Anytime:</strong> Unlock unlimited notes and premium features easily.</li>
+      <li><strong>Offline & Private:</strong> Your notes stay on your computer — encrypted and never sent online.</li>
+      <li><strong>Simple Protection:</strong> Lock your notes with one password and recover them with a code if needed.
+      </li>
+      <li><strong>Clean Interface:</strong> Enjoy a dark theme, easy navigation, and auto-save features.</li>
+      <li><strong>Upgrade Anytime:</strong> Unlock unlimited notes and premium features whenever you're ready.</li>
     </ul>
   </div>
 
@@ -133,52 +133,52 @@
 
   <script>
     // Ping your server as soon as the page loads
-  fetch("https://feedback-server-tnr.onrender.com/ping")
-    .then(() => console.log("Server pinged"))
-    .catch(() => console.log("Ping failed (may still wake the server)"));
-    
-document.getElementById('downloadBtn').addEventListener('click', async () => {
-    const btn = document.getElementById('downloadBtn');
-    btn.textContent = 'Preparing download...';
-    btn.disabled = true;
+    fetch("https://feedback-server-tnr.onrender.com/ping")
+      .then(() => console.log("Server pinged"))
+      .catch(() => console.log("Ping failed (may still wake the server)"));
 
-    // 1️⃣ Track download
-    try {
+    document.getElementById('downloadBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('downloadBtn');
+      btn.textContent = 'Preparing download...';
+      btn.disabled = true;
+
+      // 1️⃣ Track download
+      try {
         await fetch('https://feedback-server-tnr.onrender.com/track_download', { method: 'POST' });
         console.log('BMTb download counter incremented.');
-    } catch (err) {
+      } catch (err) {
         console.error('Failed to increment download count:', err);
         // Optional: retry or continue anyway
-    }
+      }
 
-    // 2️⃣ Trigger the actual download from GitHub release
-    try {
+      // 2️⃣ Trigger the actual download from GitHub release
+      try {
         const response = await fetch('https://api.github.com/repos/Tech-Naija-Rise/thought_book/releases/latest');
         const data = await response.json();
         const asset = data.assets?.[0];
         if (asset?.browser_download_url) {
-            const link = document.createElement('a');
-            link.href = asset.browser_download_url;
-            link.download = asset.name;
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-            btn.textContent = 'Download started';
+          const link = document.createElement('a');
+          link.href = asset.browser_download_url;
+          link.download = asset.name;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          btn.textContent = 'Download started';
         } else {
-            btn.textContent = 'No release found';
+          btn.textContent = 'No release found';
         }
-    } catch (e) {
+      } catch (e) {
         btn.textContent = 'Error fetching latest version';
         console.error(e);
-    }
+      }
 
-    // Reset button after a short delay
-    setTimeout(() => {
+      // Reset button after a short delay
+      setTimeout(() => {
         btn.textContent = 'Download for Windows';
         btn.disabled = false;
-    }, 4000);
-});
-</script>
+      }, 4000);
+    });
+  </script>
 
 
 </body>
