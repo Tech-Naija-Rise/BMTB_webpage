@@ -127,11 +127,14 @@
   </div>
 
   <footer>
-    © 2025 TNR · <a href="https://github.com/Tech-Naija-Rise/thought_book" target="_blank"
-      style="color: var(--accent); text-decoration: none;">View on GitHub</a>
-  </footer>
+  © <span id="year"></span> TNR · 
+  <a href="https://github.com/Tech-Naija-Rise/thought_book" target="_blank"
+    style="color: var(--accent); text-decoration: none;">View on GitHub</a>
+</footer>
 
   <script>
+    // Automatically update copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
     // Ping your server as soon as the page loads
     fetch("https://feedback-server-tnr.onrender.com/ping")
       .then(() => console.log("Server pinged"))
