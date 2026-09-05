@@ -1,19 +1,28 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="imgs/logo.ico">
-  <title>Thought Book – Private Offline Notes App</title>
+
+  <title>Thought Book | Private Offline Notes</title>
+
   <style>
     :root {
       color-scheme: dark;
       --bg: #1c1c1c;
       --text: #e5e5e5;
+      --muted: #aaa;
       --accent: #4182cd;
       --accento: #333;
       --accent-hover: #1f3d72;
+      --border: #303030;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -25,65 +34,113 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
       text-align: center;
       padding: 2rem;
     }
 
-    h1 {
-      font-size: 2.5rem;
+    main {
+      width: 100%;
+      max-width: 850px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .version {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-top: 1rem;
       margin-bottom: 0.5rem;
     }
 
+    h1 {
+      font-size: 2.8rem;
+      margin: 0;
+    }
+
     h2 {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 400;
-      color: #bbb;
-      margin-top: 0;
+      color: var(--muted);
+      margin-top: 0.4rem;
     }
 
-    p {
-      max-width: 600px;
-      margin: 1rem auto;
+    .intro {
+      max-width: 650px;
+      margin: 1.2rem auto;
+      color: #ccc;
     }
 
-    button {
+    .download-btn {
       background-color: var(--accento);
       color: #fff;
       border: none;
       border-radius: 8px;
       padding: 0.9rem 2rem;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       cursor: pointer;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       transition: background-color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    button:hover {
+    .download-btn:hover {
       background-color: var(--accent-hover);
     }
 
-    footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #777;
+    .download-btn:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
+    .download-btn img {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+    }
+
+    .demo-pics {
+      width: 100%;
+      margin: 50px 0;
+    }
+
+    .demo-pics img {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border);
     }
 
     .features {
-      margin-top: 2rem;
-      max-width: 650px;
+      width: 100%;
+      max-width: 700px;
       text-align: left;
+      margin-top: 1rem;
     }
 
     .features h3 {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       color: var(--accent);
+      text-align: center;
+      font-size: 1.3rem;
     }
 
     .features ul {
       list-style: none;
-      padding-left: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    .features li {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #202020;
     }
 
     .features li::before {
@@ -91,99 +148,250 @@
       color: var(--accent);
     }
 
-    .demo-pics {
-      margin: 50px 0px;
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        font-size: 1.15rem;
+      }
+
+      .intro {
+        font-size: 0.95rem;
+      }
+
+      .download-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .demo-pics {
+        margin: 35px 0;
+      }
     }
   </style>
+
 </head>
 
 <body>
 
-  <h1>Thought Book</h1>
-  <h2>Hide your sensitive thoughts</h2>
+  <main>
 
-  <p>Thought Book is a password-protected offline-first note app for Windows.
-    It gives you a private space to capture your thoughts without feeling paranoid 
-    if anyone were to have access to your computer.
-    All your notes are fully encrypted and locked behind a password only you should know.</p>
+```
+<div class="version">
+  Thought Book v2.0.1
+</div>
 
-  <button id="downloadBtn">
-    <img src="imgs/logo.ico" alt="icon" style="width:18px; height:18px; vertical-align:middle; margin-right:8px;">
-    Download for Windows
-  </button>
+<h1>Thought Book</h1>
 
-  <div class="demo-pics">
-    <img width=580 height=320 src="imgs/BMTB_demo.png" alt="DEMO_img">
-  </div>
+<h2>Your private space for sensitive thoughts</h2>
 
-  <div class="features">
-    <h3>Why Thought Book?</h3>
-    <ul>
-      <li><strong>Offline & Private:</strong> Your notes stay on your computer — encrypted and never sent online.</li>
-      <li><strong>Simple Protection:</strong> Lock your notes with one password and add a hint.
-      </li>
-      <li><strong>Clean Interface:</strong> Enjoy a dark theme, auto-lock, easy navigation, and auto-save features.</li>
-      <li><strong>Upgrade Anytime:</strong> Unlock unlimited notes and premium features whenever you're ready.</li>
-    </ul>
-  </div>
+<p class="intro">
+  Thought Book is a password protected, offline first notes app for Windows.
+  Your notes are encrypted and stored locally on your computer, giving you
+  a private place to write down thoughts, ideas, and information without
+  relying on an online service.
+</p>
+
+<button class="download-btn" id="downloadBtn">
+  <img src="imgs/logo.ico" alt="Thought Book icon">
+  Download for Windows
+</button>
+
+<div class="demo-pics">
+  <img
+    src="imgs/BMTB_demo.png"
+    alt="Thought Book application preview">
+</div>
+
+<div class="features">
+
+  <h3>Why Thought Book?</h3>
+
+  <ul>
+
+    <li>
+      <strong>Offline and Private:</strong>
+      Your notes remain on your computer and are not dependent on
+      an online notes service.
+    </li>
+
+    <li>
+      <strong>Stronger Encryption:</strong>
+      Your notes are protected using modern cryptographic technology
+      rather than a basic custom encryption method.
+    </li>
+
+    <li>
+      <strong>Password Protection:</strong>
+      Protect your private notes with a password and use a password
+      hint to help you remember it.
+    </li>
+
+    <li>
+      <strong>Cleaner Experience:</strong>
+      The interface has been redesigned to be simpler, cleaner,
+      and more professional.
+    </li>
+
+    <li>
+      <strong>Auto Lock:</strong>
+      Automatically protect your notes when you leave the application
+      unattended.
+    </li>
+
+    <li>
+      <strong>Auto Save:</strong>
+      Your work can be saved automatically while you use the app.
+    </li>
+
+    <li>
+      <strong>Improved Performance:</strong>
+      Version 2.0.1 brings faster startup, faster interface loading,
+      and improved overall stability.
+    </li>
+
+  </ul>
+
+</div>
+```
+
+  </main>
 
   <footer>
-  © <span id="year"></span> TNR · 
-  <a href="https://github.com/Tech-Naija-Rise/thought_book" target="_blank"
-    style="color: var(--accent); text-decoration: none;">View on GitHub</a>
-</footer>
+    © <span id="year"></span> TNR ·
+    <a
+      href="https://github.com/Tech-Naija-Rise/thought_book"
+      target="_blank"
+      rel="noopener noreferrer">
+      View on GitHub
+    </a>
+  </footer>
 
   <script>
-    // Automatically update copyright year
-    document.getElementById("year").textContent = new Date().getFullYear();
-    // Ping your server as soon as the page loads
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
     fetch("https://feedback-server-tnr.onrender.com/ping")
       .then(() => console.log("Server pinged"))
-      .catch(() => console.log("Ping failed (may still wake the server)"));
+      .catch(() =>
+        console.log("Ping failed (may still wake the server)")
+      );
 
-    document.getElementById('downloadBtn').addEventListener('click', async () => {
-      const btn = document.getElementById('downloadBtn');
-      btn.textContent = 'Preparing download...';
-      btn.disabled = true;
+    document.getElementById("downloadBtn").addEventListener(
+      "click",
+      async () => {
 
-      // 1️⃣ Track download
-      try {
-        await fetch('https://feedback-server-tnr.onrender.com/track_download', { method: 'POST' });
-        console.log('BMTb download counter incremented.');
-      } catch (err) {
-        console.error('Failed to increment download count:', err);
-        // Optional: retry or continue anyway
-      }
+        const btn = document.getElementById("downloadBtn");
 
-      // 2️⃣ Trigger the actual download from GitHub release
-      try {
-        const response = await fetch('https://api.github.com/repos/Tech-Naija-Rise/BMTB/releases/latest');
-        const data = await response.json();
-        const asset = data.assets?.[0];
-        if (asset?.browser_download_url) {
-          const link = document.createElement('a');
-          link.href = asset.browser_download_url;
-          link.download = asset.name;
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
-          btn.textContent = 'Download started';
-        } else {
-          btn.textContent = 'No release found';
+        btn.innerHTML = "Preparing download...";
+        btn.disabled = true;
+
+        try {
+
+          await fetch(
+            "https://feedback-server-tnr.onrender.com/track_download",
+            {
+              method: "POST"
+            }
+          );
+
+        } catch (err) {
+
+          console.error(
+            "Failed to increment download count:",
+            err
+          );
+
         }
-      } catch (e) {
-        btn.textContent = 'Error fetching latest version';
-        console.error(e);
+
+        try {
+
+          const response = await fetch(
+            "https://api.github.com/repos/Tech-Naija-Rise/BMTB/releases/latest"
+          );
+
+          if (!response.ok) {
+            throw new Error(
+              `GitHub API returned ${response.status}`
+            );
+          }
+
+          const data = await response.json();
+
+          const asset = data.assets?.[0];
+
+          if (asset?.browser_download_url) {
+
+            const link = document.createElement("a");
+
+            link.href = asset.browser_download_url;
+            link.download = asset.name;
+
+            document.body.appendChild(link);
+
+            link.click();
+
+            link.remove();
+
+            btn.innerHTML = "Download started";
+
+          } else {
+
+            btn.innerHTML = "No release found";
+
+          }
+
+        } catch (error) {
+
+          console.error(error);
+
+          btn.innerHTML =
+            "Unable to find latest release";
+
+        }
+
+        setTimeout(() => {
+
+          btn.innerHTML = `
+            <img
+              src="imgs/logo.ico"
+              alt="Thought Book icon">
+            Download for Windows
+          `;
+
+          btn.disabled = false;
+
+        }, 4000);
+
       }
+    );
 
-      // Reset button after a short delay
-      setTimeout(() => {
-        btn.textContent = 'Download for Windows';
-        btn.disabled = false;
-      }, 4000);
-    });
   </script>
-
 
 </body>
 
