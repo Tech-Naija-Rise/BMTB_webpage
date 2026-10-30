@@ -20,6 +20,9 @@ When changing the theme, start with these variables instead of replacing colors 
 - `.wrap` centers content and constrains its width.
 - `.topbar` and `.nav` arrange the brand and navigation.
 - `.hero`, `.actions`, and `.product-shot` control the first-screen content.
+- `.trust-strip` and `.trust-item` present factual privacy information in compact institutional cards.
+- `.download-frame` groups the official release action and its source/backup context.
+- `.download-dialog` and `.dialog-*` style the deliberate pre-download confirmation step.
 - `.grid` and `.feature` arrange the feature cards.
 - `.manifesto` creates the two-column privacy panel.
 - `.notice` styles the installation warning.
@@ -69,3 +72,12 @@ The current page includes several useful accessibility choices:
 - Reduced-motion CSS.
 
 Preserve these when editing. If you add an interactive element, ensure it can be reached and used by keyboard and that its state is communicated accessibly.
+
+
+## Security and trust presentation
+
+The security cues are intentionally descriptive rather than certification badges. The page states that notes are stored locally, that password/encryption protection is handled by the desktop app, and that no hosted notes account is required. It does not claim an independent security audit, certification, guaranteed protection, or a secure website checkout.
+
+The download frame visually groups the action with the official GitHub release destination. Both download buttons open the same native HTML dialog. The visitor must type `DOWNLOAD` before the existing GitHub release lookup starts. The dialog can be dismissed with its cancel button or the browser's native Escape behavior.
+
+Do not remove or weaken the installation warning without checking current release behavior. The confirmation exists because the current release may overwrite an older notes database and does not provide password recovery.

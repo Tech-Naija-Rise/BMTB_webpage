@@ -37,6 +37,8 @@ The hero is the first main section. It includes:
 - The primary **Download for Windows** button.
 - A secondary link to the desktop app source.
 - A status line that explains the download context.
+- A three-part privacy facts strip covering local storage, app-level password/encryption protection, and the absence of a hosted notes account.
+- A framed official-release download area.
 - A screenshot of the desktop application.
 
 This is the most important section for first-time visitors. Keep its message understandable and make sure the screenshot matches the current app.
