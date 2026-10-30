@@ -5,7 +5,17 @@ The primary download button is wired by the JavaScript near the bottom of `index
 ## Flow in simple terms
 
 ```text
-Visitor clicks the button
+Visitor clicks either download button
+          |
+          v
+Native confirmation dialog explains database overwrite
+and password-recovery risks
+          |
+          v
+Visitor types DOWNLOAD to continue
+          |
+          v
+Visitor submits confirmation
           |
           v
 Prevent normal link navigation
@@ -56,10 +66,11 @@ The script searches the returned `assets` list for an asset name matching `/\.ex
 
 ## What visitors see
 
-1. When clicked, the button temporarily changes to **Finding the latest installer…** and the status text says that GitHub is being checked.
-2. If an installer is found, the script creates a temporary link, clicks it programmatically, removes it, and changes the button text briefly.
-3. If the request fails or no matching installer exists, the browser is sent to the latest GitHub release page so the visitor can inspect available downloads manually.
-4. After about 2.5 seconds, the script restores the original button label and clears its busy state.
+1. Clicking either download button opens a confirmation dialog. It explains the risk to older notes and the lack of password recovery. The visitor must type `DOWNLOAD` to proceed; cancelling or pressing Escape stops the flow.
+2. After confirmation, the buttons temporarily change to **Finding the latest installer…** and the status text says that GitHub is being checked.
+3. If an installer is found, the script creates a temporary link, clicks it programmatically, removes it, and changes the button text briefly.
+4. If the request fails or no matching installer exists, the browser is sent to the latest GitHub release page so the visitor can inspect available downloads manually.
+5. After about 2.5 seconds, the script restores the original button label and clears its busy state.
 
 The browser may handle the download in a way that varies by browser settings. The page's status message appropriately tells visitors to open the release page if the download did not start.
 
